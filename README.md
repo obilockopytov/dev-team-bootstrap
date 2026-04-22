@@ -34,7 +34,7 @@ Nothing here replaces your product code; agent memory stays **local** and out of
 
 ## Source repository
 
-Canonical copy: **https://github.com/obilockopytov/dev-team-bootstrap** (personal GitHub).
+Canonical copy: **https://github.com/obilockopytov/dev-team-bootstrap** 
 
 If you cloned without `origin` and want your own remote:
 
