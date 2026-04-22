@@ -32,15 +32,15 @@ For **each git repository** under `--dev-projects`:
 
 Nothing here replaces your product code; agent memory stays **local** and out of remote by policy.
 
-## Publishing to GitHub (Bulls Media org)
+## Source repository
 
-From this directory after your first commit:
+Canonical copy: **https://github.com/obilockopytov/dev-team-bootstrap** (personal GitHub).
+
+If you cloned without `origin` and want your own remote:
 
 ```bash
-gh repo create Bulls_Media/dev-team-bootstrap --private --source=. --remote=origin --push
+gh repo create YOUR_USER/dev-team-bootstrap --private --source=. --remote=origin --push
 ```
-
-Adjust visibility and org name to match your team.
 
 ## License
 
