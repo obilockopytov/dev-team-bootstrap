@@ -1,0 +1,11 @@
+
+# --- AI layer: local only (REBUILD §2.8) ---
+.cursor/
+.claude/
+.codex/
+wiki/
+raw/
+CONTEXT.md
+AGENTS.md
+CLAUDE.md
+graphify-out/

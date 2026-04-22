@@ -1,0 +1,12 @@
+{
+  "userIgnoreFilters": [
+    "**/node_modules/**",
+    "**/.git/**",
+    "**/dist/**",
+    "**/build/**",
+    "**/.next/**",
+    "**/graphify-out/**",
+    "**/.turbo/**",
+    "**/coverage/**"
+  ]
+}

@@ -1,0 +1,20 @@
+---
+description: Session order — CONTEXT, wiki, optional graphify, then code
+alwaysApply: true
+---
+
+Treat this directory as the canonical workspace for this repository.
+
+At session start:
+
+1. Read `CONTEXT.md` at the repo root.
+2. Read `wiki/index.md`.
+3. If present, read `graphify-out/GRAPH_REPORT.md`.
+4. Only then expand into raw code files.
+
+Rules:
+
+- Use `wiki/` as durable memory and navigation, not as a replacement for code.
+- Verify session-derived notes against live repo files before treating them as final architecture.
+- Update `CONTEXT.md` after significant work.
+- Add durable findings to `wiki/` and append them to `wiki/log.md` when that file exists.

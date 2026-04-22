@@ -1,0 +1,12 @@
+---
+description: Local LLM Wiki — handoff and wiki at repo root
+globs: []
+alwaysApply: true
+---
+
+# LLM Wiki — agent context
+
+- Start with **`CONTEXT.md`**, then **`wiki/index.md`**, then specific `wiki/` pages as needed.
+- Layering rules: **`wiki/CONSTITUTION.md`**.
+- Tooling schema: **`AGENTS.md`** and **`CLAUDE.md`**.
+- These paths are **local-only** (see `.gitignore`); do not expect them on the remote.
