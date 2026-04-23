@@ -48,6 +48,19 @@ Confirm `graphify-out/graph.json` and `GRAPH_REPORT.md` exist after the run.
 
 Do **not** commit `wiki/`, `raw/`, `CONTEXT.md`, `AGENTS.md`, `CLAUDE.md`, `.claude/`, `.cursor/`, `graphify-out/` to remote; they should remain ignored locally. If the installer printed `git rm --cached` warnings, the user should review `git status` and commit only intentional code changes.
 
+## Step 7 — AI Wiki hooks (optional but recommended)
+
+Install global IDE hooks to automatically log AI sessions and remind you to update wiki:
+
+1. Read [`HOOKS.md`](./HOOKS.md) for detailed setup instructions.
+2. Create the wiki update script at `~/bin/ai-update-wiki.sh`.
+3. Configure user-level hooks in:
+   - `~/.cursor/hooks.json`
+   - `~/.claude/hooks.json`
+   - `~/.codex/hooks.json`
+
+Expected result: After every tool use and at session end, files appear in `~/wiki/sessions/` and `~/wiki/UPDATE_REMINDER.md` is updated.
+
 ## Done
 
 Report: number of repos found, any failures, and whether Obsidian opens the vault without errors.

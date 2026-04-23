@@ -28,6 +28,7 @@ For **each git repository** under `--dev-projects`:
 - Creates minimal **`wiki/`**, **`raw/`**, **`CONTEXT.md`**, **`AGENTS.md`**, **`CLAUDE.md`** if missing.
 - Writes **`.claude/settings.json`** and **`.codex/hooks.json`** (graphify hint hooks).
 - Ensures **`.cursor/rules/`** exists and adds **`llm-wiki-context.mdc`** + **`repo-llm-workflow.mdc`** (unless `launcher.mdc` already exists).
+- See [`HOOKS.md`](./HOOKS.md) for optional global IDE hooks that auto-update `~/wiki/` with session logs.
 - If `AGENTS.md` / `CLAUDE.md` / `CONTEXT.md` / `wiki` / `raw` were accidentally tracked, runs **`git rm --cached`** for those paths only.
 
 Nothing here replaces your product code; agent memory stays **local** and out of remote by policy.
