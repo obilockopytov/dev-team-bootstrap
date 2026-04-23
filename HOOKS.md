@@ -1,19 +1,19 @@
 # AI Wiki Hooks Setup
 
-Автоматическое обновление wiki при работе с AI-ассистентами через IDE-хуки.
+Automatic wiki updates when working with AI assistants via IDE hooks.
 
-## Что делает
+## What It Does
 
-Хуки автоматически:
-- Логируют использованные инструменты в `~/wiki/sessions/YYYY-MM-DD.md`
-- Создают напоминание `~/wiki/UPDATE_REMINDER.md` при завершении сессии
-- Синхронизируют активность между Cursor, Claude Code и Codex
+Hooks automatically:
+- Log used tools to `~/wiki/sessions/YYYY-MM-DD.md`
+- Create reminder `~/wiki/UPDATE_REMINDER.md` at session end
+- Sync activity between Cursor, Claude Code, and Codex
 
-## Установка
+## Installation
 
-### 1. Скрипт обновления wiki
+### 1. Wiki Update Script
 
-Создай `~/bin/ai-update-wiki.sh`:
+Create `~/bin/ai-update-wiki.sh`:
 
 ```bash
 #!/bin/bash
@@ -82,12 +82,12 @@ fi
 echo '{}'
 ```
 
-Сделай исполняемым:
+Make executable:
 ```bash
 chmod +x ~/bin/ai-update-wiki.sh
 ```
 
-### 2. Cursor hooks (`~/.cursor/hooks.json`)
+### 2. Cursor Hooks (`~/.cursor/hooks.json`)
 
 ```json
 {
@@ -95,19 +95,19 @@ chmod +x ~/bin/ai-update-wiki.sh
   "hooks": {
     "postToolUse": [
       {
-        "command": "/Users/jammy/bin/ai-update-wiki.sh >> /tmp/ai-wiki-hook.log 2>&1",
+        "command": "/Users/USERNAME/bin/ai-update-wiki.sh >> /tmp/ai-wiki-hook.log 2>&1",
         "timeout": 5
       }
     ],
     "sessionEnd": [
       {
-        "command": "/Users/jammy/bin/ai-update-wiki.sh >> /tmp/ai-wiki-hook.log 2>&1",
+        "command": "/Users/USERNAME/bin/ai-update-wiki.sh >> /tmp/ai-wiki-hook.log 2>&1",
         "timeout": 10
       }
     ],
     "stop": [
       {
-        "command": "/Users/jammy/bin/ai-update-wiki.sh >> /tmp/ai-wiki-hook.log 2>&1",
+        "command": "/Users/USERNAME/bin/ai-update-wiki.sh >> /tmp/ai-wiki-hook.log 2>&1",
         "timeout": 10
       }
     ]
@@ -115,7 +115,7 @@ chmod +x ~/bin/ai-update-wiki.sh
 }
 ```
 
-### 3. Claude Code hooks (`~/.claude/hooks.json`)
+### 3. Claude Code Hooks (`~/.claude/hooks.json`)
 
 ```json
 {
@@ -123,19 +123,19 @@ chmod +x ~/bin/ai-update-wiki.sh
   "hooks": {
     "postToolUse": [
       {
-        "command": "/Users/jammy/bin/ai-update-wiki.sh >> /tmp/ai-wiki-hook.log 2>&1",
+        "command": "/Users/USERNAME/bin/ai-update-wiki.sh >> /tmp/ai-wiki-hook.log 2>&1",
         "timeout": 5
       }
     ],
     "sessionEnd": [
       {
-        "command": "/Users/jammy/bin/ai-update-wiki.sh >> /tmp/ai-wiki-hook.log 2>&1",
+        "command": "/Users/USERNAME/bin/ai-update-wiki.sh >> /tmp/ai-wiki-hook.log 2>&1",
         "timeout": 10
       }
     ],
     "stop": [
       {
-        "command": "/Users/jammy/bin/ai-update-wiki.sh >> /tmp/ai-wiki-hook.log 2>&1",
+        "command": "/Users/USERNAME/bin/ai-update-wiki.sh >> /tmp/ai-wiki-hook.log 2>&1",
         "timeout": 10
       }
     ]
@@ -143,7 +143,7 @@ chmod +x ~/bin/ai-update-wiki.sh
 }
 ```
 
-### 4. Codex hooks (`~/.codex/hooks.json`)
+### 4. Codex Hooks (`~/.codex/hooks.json`)
 
 ```json
 {
@@ -163,21 +163,21 @@ chmod +x ~/bin/ai-update-wiki.sh
     "postToolUse": [
       {
         "type": "command",
-        "command": "/Users/jammy/bin/ai-update-wiki.sh >> /tmp/ai-wiki-hook.log 2>&1",
+        "command": "/Users/USERNAME/bin/ai-update-wiki.sh >> /tmp/ai-wiki-hook.log 2>&1",
         "timeout": 5
       }
     ],
     "sessionEnd": [
       {
         "type": "command",
-        "command": "/Users/jammy/bin/ai-update-wiki.sh >> /tmp/ai-wiki-hook.log 2>&1",
+        "command": "/Users/USERNAME/bin/ai-update-wiki.sh >> /tmp/ai-wiki-hook.log 2>&1",
         "timeout": 10
       }
     ],
     "stop": [
       {
         "type": "command",
-        "command": "/Users/jammy/bin/ai-update-wiki.sh >> /tmp/ai-wiki-hook.log 2>&1",
+        "command": "/Users/USERNAME/bin/ai-update-wiki.sh >> /tmp/ai-wiki-hook.log 2>&1",
         "timeout": 10
       }
     ]
@@ -185,22 +185,24 @@ chmod +x ~/bin/ai-update-wiki.sh
 }
 ```
 
-## Структура wiki
+**Note:** Replace `USERNAME` with your actual username (e.g., `jammy`).
+
+## Wiki Structure
 
 ```
 ~/wiki/
-├── README.md           # Документация wiki
-├── UPDATE_REMINDER.md  # Создаётся автоматически при завершении сессии
+├── README.md           # Wiki documentation
+├── UPDATE_REMINDER.md  # Auto-created at session end
 └── sessions/
-    └── 2026-04-23.md   # Лог сессий по датам
+    └── 2026-04-23.md   # Session logs by date
 ```
 
-## Требования
+## Requirements
 
-- `jq` для обработки JSON
-- `bash` и стандартные Unix утилиты
+- `jq` for JSON processing
+- `bash` and standard Unix utilities
 
-Установка jq:
+Install jq:
 ```bash
 # macOS
 brew install jq
@@ -209,15 +211,15 @@ brew install jq
 sudo apt-get install jq
 ```
 
-## Отладка
+## Debugging
 
-Логи хуков пишутся в `/tmp/ai-wiki-hook.log`:
+Hook logs are written to `/tmp/ai-wiki-hook.log`:
 ```bash
 tail -f /tmp/ai-wiki-hook.log
 ```
 
-## Кастомизация
+## Customization
 
-- Измени `$WIKI_DIR` в скрипте для другого расположения
-- Добавь свои события в `hooks.json`
-- Модифицируй формат логов в `ai-update-wiki.sh`
+- Change `$WIKI_DIR` in the script for different location
+- Add your own events to `hooks.json`
+- Modify log format in `ai-update-wiki.sh`
